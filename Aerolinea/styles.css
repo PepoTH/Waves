@@ -1,0 +1,362 @@
+@font-face {
+    font-family: "Philosopher";
+    src: url("Philosopher/Philosopher-Bold.ttf") format("truetype");
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    background-image: url(cielo.jpg);
+    background-size: 110%;
+    overflow: hidden;
+    background-repeat:no-repeat;
+    background-color:aliceblue ;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: transparent;
+    border-style: solid;
+    width: 70vw;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 20px;
+    border-color: #ffffff20;
+    box-shadow: inset 0 0 20px 1px #d2d2d220, 0 0 5px 1px #ffffff30;
+    transition: all 0.5s;
+}
+
+.header-nav:hover {
+    transform: scale(1.05);
+    background-color: #ffffff30;
+}
+
+#header-title {
+    font-family: 'Philosopher';
+    color: #0E295D;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.enlace, #main-btn-reserve {
+    text-decoration: none;
+    font-family: 'Philosopher';
+    color: white;
+    padding: 10px 30px;
+    border-radius: 15px;
+    background-color: #0E295D;
+    transition: all 0.5s;
+}
+
+.enlace:hover {
+    cursor: pointer;
+    color: #0E295D;
+    background-color: white;
+    padding: 10px 40px;
+}
+
+#header-nube {
+    position: absolute;
+    width: 20vw;
+}
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    text-align: center;
+    font-size: 2rem;
+    color: #0E295D;
+    font-family: 'Philosopher';
+    filter: drop-shadow(0 0 8px white);
+}
+
+#main-btn-reserve {
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 15px 60px;
+    margin: 10px;
+    transition: all 0.7s;
+}
+
+#main-btn-reserve:hover {
+    color: #0E295D;
+    background-color: white;
+    padding: 15px 70px;
+}
+
+#avion-move {
+    width: 10%;
+    position: absolute;
+    transform: rotate(45deg);
+    left: -10%;
+    animation: avioncito infinite 6s ease-in-out;
+}
+
+#main-title {
+    font-size: 2.5rem;
+    transition: all 1s;
+}
+
+#main-title:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+@keyframes avioncito {
+    from {
+        left: -5%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+.nube-main,.nube-main2 {
+    z-index: 999;
+    position: absolute;
+    width: 50%;
+    left: -10%;
+    bottom: -40%;
+    transition: all 1s;
+}
+
+.nube-main2 {
+    transform: rotate(-45deg);
+    left: 70%;
+}
+
+/*
+    PRINCIPAL HECHO
+*/
+
+.reservar {
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.reserv-datos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: transparent;
+    border-style: solid;
+    width: 15%;
+    background-color: #ffffff50;
+    padding: 20px;
+    border-radius: 20px;
+    border-color: #ffffff20;
+    box-shadow: inset 0 0 20px 1px #d2d2d220, 0 0 5px 1px #ffffff30;
+    height: 90%;
+    color: #0E295D;
+    font-family: 'Philosopher';
+}
+
+.reserv-datos.visible {
+    transition: all 1s;
+}
+
+.reserv-input, #reserv-confirm, #reserv-cancel, #pago-confirm, #pago-cancel, .pago-correo  {
+    margin-top: 5%;
+    height: 6%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.8rem;
+    transition: all 0.5s;
+}
+
+.reserv-input:focus {
+    height: 6%;
+    outline: none;
+    border-color: #0E295D;
+    border-style: solid;
+}
+
+.mano {
+    appearance: none;
+}
+
+.reserv-label-mano {
+    margin-top: 5%;
+}
+
+#reserv-confirm, #pago-confirm, .pago-correo  {
+    height: 8%;
+    background-color: #0E295D;
+    color: white;
+    font-weight: bold;
+}
+
+#reserv-cancel, #pago-cancel {
+    height: 8%;
+    background-color: white;
+    font-weight: bold;
+    color: #0E295D;
+}
+
+#reserv-confirm:hover, #pago-confirm:hover, .pago-correo:hover  {
+    color: white;
+    background-color: #1d54ba;
+    cursor: pointer;
+}
+
+#reserv-cancel:hover , #pago-cancel:hover{
+    cursor: pointer;
+}
+
+.asientos, .pago-cuadro, .boleto-cuadro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: transparent;
+    border-style: solid;
+    width: 35%;
+    margin-right: 1%;
+    background-color: #ffffff50;
+    padding: 20px;
+    border-radius: 20px;
+    border-color: #ffffff20;
+    box-shadow: inset 0 0 20px 1px #d2d2d220, 0 0 5px 1px #ffffff30;
+    height: 90%;
+    color: #0E295D;
+    font-family: 'Philosopher';
+}
+
+.pago,.boleto {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pago-input {
+    margin: 1%;
+    height: 5%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.8rem;
+    transition: all 0.5s;
+}
+
+.pago-input:focus {
+    height: 6%;
+    outline: none;
+    border-color: #0E295D;
+    border-style: solid;
+}
+
+.nom-cuenta {
+    margin-top: 5%;
+}
+
+#foto-email {
+    height: 30%;
+    width: 30%;
+}
+
+.pago-cuadro-confirm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-style: solid;
+    width: 35%;
+    margin-right: 1%;
+    background-color: #ffffff50;
+    padding: 20px;
+    border-radius: 20px;
+    border-color: #ffffff20;
+    box-shadow: inset 0 0 20px 1px #d2d2d220, 0 0 5px 1px #ffffff30;
+    height: 90%;
+    color: #0E295D;
+    font-family: 'Philosopher';
+}
+
+.pago-confirmacion-texto {
+    text-align: center;
+    font-family: 'Philosopher';
+    font-size: 1.5rem;
+}
+
+.boleto-cuadro {
+    align-items: center;
+    text-align: center;
+}
+
+#boleto-btn {
+    width: 50%;
+    height: 7%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Philosopher';
+    background-color: #0E295D;
+    transition: all 0.5s;
+}
+
+#boleto-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.p-boleto {
+    color: #0E295D;
+    margin: 10px;
+}
+
+#contenedor-asientos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px; /* Ajustar según sea necesario */
+    margin: 0 auto; /* Centrar el contenedor horizontalmente */
+}
+
+.fila-asientos {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.butaca {
+    width: 50px; /* Ajustar según sea necesario */
+    height: 50px;
+    background-color: white; /* Color base de las butacas */
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px; /* Agregar redondez a las esquinas */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    transition: all 1s;
+}
+
+.butaca:hover {
+    background-color: lightsalmon;
+    transform: scale(1.1);
+}
+
+.butaca.ocupado {
+    background-color: orange; /* Color para butacas ocupadas */
+}
+
+#asientos-title {
+    margin: 10px;
+}

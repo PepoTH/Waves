@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waves</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="avion.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="header-nav">
+            <h2 id="header-title">Waves</h1>
+            <div class="header-vinculos">
+                <a class="enlace about">About me</a>
+                <a class="enlace reserv">Reservar</a>
+            </div>
+            <img id="header-nube" src="nube.png">
+        </div>
+    </header>
+    <main>
+        <div class="view principal">
+            <h1 id="main-title">Lleva tus sueños a alturas 
+                inexploradas<br> donde las olas del cielo se encuentran con 
+                las olas del mar
+            </h1>
+            <button id="main-btn-reserve">Reserva ya tu vuelo</button>
+            
+        </div>
+        <div class="view aboutme">
+            
+        </div>
+        <div class="view reservar">
+            <div class="asientos">
+                <h2 id="asientos-title">Asientos</h2>
+
+                <div id="contenedor-asientos">
+
+                </div>
+            </div>
+            <div class="reserv-datos">
+                <h2 id="datos-title">Datos</h2>
+                <input class="reserv-input name" placeholder="Nombre" type="text">
+                <input class="reserv-input apellido" placeholder="Apellido" type="text">
+                <input class="reserv-input cedula" placeholder="Cedula" type="text">
+                <input class="reserv-input maletas" placeholder="Cantidad de Maletas" type="text">
+                <input class="reserv-input peso" placeholder="Peso KG" type="text">
+                <input class="reserv-input correo" placeholder="Correo" type="text">
+                <p class="reserv-label-mano">Equipaje de Mano</p>
+                <select class="mano reserv-input">
+                    <option>Si</option>
+                    <option>No</option>
+                </select>
+                <button id="reserv-confirm" class="reserv-label-mano">Confirmar</button>
+                <button id="reserv-cancel" class="reserv-label-mano">Cancelar</button>
+            </div>
+        </div>
+        <div class="view pago">
+            <div class="pago-cuadro">
+                <h2 id="pago-title">Pago</h2>
+                <input class="pago-input nom-cuenta" placeholder="Nombre" type="text">
+                <input class="pago-input pago-ape" placeholder="Apellido" type="text">
+                <input class="pago-input num-cuenta" placeholder="Numero de Cuenta" type="text">
+                <input class="pago-input ced-cuenta" placeholder="Cedula de la cuenta" type="text">
+                <input class="pago-input tel-cuenta" placeholder="Telefono de Cuenta" type="text">
+                <input class="pago-input nom-banco" placeholder="Nombre del Banco" type="text">
+                <button id="pago-confirm" class="pago-label-mano">Confirmar</button>
+                <button id="pago-cancel" class="pago-label-mano">Cancelar</button>
+            </div>
+            <div class="pago-cuadro-confirm">
+                <img id="foto-email" src="email.png">
+                <p class="pago-confirmacion-texto">
+                    La confirmacion de su pago ha sido enviada a su correo electronico
+                </p>
+                <button id="correo-confirm" class="pago-correo">Confirmado</button>
+            </div>
+        </div>
+        <div class="view boleto">
+            <div class="boleto-cuadro">
+                <h2>¡Muchas Gracias por su compra, sera un viaje inolvidable!</h2>
+                <p class="p-boleto" id="nombre-boleto">Nombre: </p>
+                <p class="p-boleto"  id="ape-boleto">Apellido: </p>
+                <p class="p-boleto"  id="correo-boleto">Correo: </p>
+                <p class="p-boleto"  id="cedula-boleto">Cedula: </p>
+                <p class="p-boleto"  id="fecha-com">Fecha de Compra: </p>
+                <p class="p-boleto"  id="fecha-vuelo">Fecha de Vuelo: </p>
+                <p class="p-boleto"  id="hora-vuelo">Hora de Vuelo: </p>
+                <p class="p-boleto"  id="puerta-boleto">Puerta de Embargue: </p>
+                <p class="p-boleto"  id="factura-boleto">Factura: </p>
+                <p class="p-boleto"  id="monto-boleto">Monto: </p>
+                <button id="boleto-btn">Volver</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <img class="nube-main" src="nube.png">
+        <img src="avion-move.png" id="avion-move">
+        <img class="nube-main2" src="nube.png">
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

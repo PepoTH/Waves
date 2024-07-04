@@ -1,0 +1,398 @@
+@font-face {
+    font-family: "Philosopher";
+    src: url("Philosopher/Philosopher-Bold.ttf") format("truetype");
+}
+
+* {
+    margin: 0;
+    font-family: "Philosopher";
+    color: #0E295D;
+}
+
+body {
+    background-image: url('cielo.jpg');
+    background-size:cover;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 15vh;
+    
+}
+
+ul {
+    display: flex;
+    list-style:none;
+    align-items: center;
+}
+
+.botones-head {
+    padding: 10px 20px 10px 20px;
+    background-color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+#btn-reservar {
+    background-color: #0E295D;
+    color: white;
+    cursor: pointer;
+}
+
+#title {
+    font-size: 3em;
+}
+
+.botones-head:hover {
+    box-shadow: 0 0px 10px 0 #ffffff;
+    cursor: pointer;
+}
+
+main {
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-plane {
+    width: 20%;
+    position: absolute;
+    right: 70vw;
+    bottom: 45vh;
+}
+
+#frase {
+    font-size: 4em;
+}
+
+footer {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-frase {
+    font-size: 1.5em;
+}
+
+#avion-move {
+    position: absolute;
+    width: 100px;
+    bottom: 10%;
+    transform: rotate(45deg);
+    animation: mover infinite 8s;
+}
+
+@keyframes mover {
+    from {
+        left: -15%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+#principal-frase {
+    font-size: 4em;
+}
+
+
+
+/* PRINCIPAL HECHA */
+
+
+
+
+.reservar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 60VW;
+    border-radius: 20px;
+    height: 70vh;
+}
+
+.foto-avion {
+    height: 400px;
+}
+
+.input {
+    width: 80%;
+    background-color: white;
+    height: 20px;
+    appearance: none;
+    padding: 5px;
+    border: none;
+    border-color: #D9D9D9;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: 'Inter-Light';
+    
+}
+
+
+.adicional {
+    font-family: 'Inter-Light';
+    color: #D9D9D9;
+    margin-top: -8px;
+    margin-bottom: 10px;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #0E295D;
+}
+
+#selector {
+    font-family: 'Inter';
+    height: 35px;
+}
+
+#title-reserva {
+    margin-bottom: 30px;
+}
+
+.equipaje {
+    margin: 10px;
+}
+
+.si, .no {
+    appearance: none;
+    border-style: solid;
+    width: 20px;
+    height: 20px;
+    margin-bottom: -5px;
+    border-radius: 5px;
+}
+
+.si:checked, .no:checked {
+    appearance: none;
+    border-style: solid;
+    width: 20px;
+    height: 20px;
+    margin-bottom: -5px;
+    border-radius: 5px;
+    background-color: #0E295D;
+}
+
+.title-monto {
+    margin-top: 15px;
+}
+
+#confirm-reserva, #cancel-reserva {
+    margin-top: 20px;
+    appearance: none;
+    border-radius: 5px;
+    width: 40%;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-style: solid;
+}
+
+#confirm-reserva:hover, #cancel-reserva:hover {
+    transform: scale(1.2);
+}
+
+#confirm-reserva {
+    background-color: #0E295D;
+    color: white;
+    border: none;
+    font-size: 1em;
+    font-family: 'Inter';
+}
+
+#cancel-reserva {
+    background-color: white;
+    border-color: #0E295D;
+    font-size: 1em;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+
+/* RESERVA HECHA */
+
+
+
+#personal-confirm, #personal-cancel {
+    margin-top: 20px;
+    appearance: none;
+    border-radius: 5px;
+    width: 40%;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-style: solid;
+}
+
+#personal-confirm {
+    background-color: #0E295D;
+    color: white;
+    border: none;
+    font-size: 1em;
+    font-family: 'Inter';
+}
+
+#personal-cancel {
+    background-color: white;
+    border-color: #0E295D;
+    font-size: 1em;
+    font-family: 'Inter';
+}
+
+.personal-contenedor {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    width: 50vw;
+    height: 60vh;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+#personal-logo {
+    filter: drop-shadow(0 0 4px black);
+    width: 40%;
+}
+
+#title-personal {
+    margin-bottom: 100px;
+}
+
+.personal-input {
+    display: block;
+    width: 80%;
+    background-color: white;
+    height: 20px;
+    appearance: none;
+    padding: 5px;
+    border: none;
+    border-color: #D9D9D9;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: 'Inter-Light';
+}
+
+.personal-input:focus {
+    outline: none;
+    border-color: #0E295D;
+}
+
+#personal-confirm:hover , #personal-cancel:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px 0  #0E295D;
+}
+
+
+
+
+/* PERSONAL HECHA */
+
+
+
+.boleto {
+    background-color: white;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    height: 60vh;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+.subtitle-boleto {
+    color: #D9D9D9;
+}
+
+#back-boleto {
+    appearance: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    background-color: #0E295D;
+    width: 100%;
+    height: 40px;
+    font-size: 1.2em;
+    border: none;
+    color: white;
+}
+
+#back-boleto:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px 0  #0E295D;
+}
+
+
+
+
+/* BOLETO HECHA */
+
+
+
+.asientos {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 60vh;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+}
+
+.subtitle-asientos {
+    color: #D9D9D9;
+}
+
+#btn-asientos {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    background-color: #0E295D;
+    width: 100%;
+    height: 40px;
+    font-size: 1.2em;
+    border: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+#btn-asientos:hover {
+    transform: scale(1.1);
+}
+
+#avion-asientos {
+    width: 50%;
+}
+
+.lista-asientos {
+    text-align: center;
+    height: 300px;
+    padding: 20px;
+    width: 80%;
+}
+
+.left-asientos {
+    margin: 5px;
+}
