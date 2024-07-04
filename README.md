@@ -4,7 +4,8 @@
 
 <div align="center">
   <img height=300px width=60% src="https://miro.medium.com/v2/resize:fit:1000/0*8dUtdmnHGhq0NMr4.gif">
-</div>
+</div>  
+
 ---
 
 ### **Aerolínea Waves: Descubriendo Nuevos Horizontes**
