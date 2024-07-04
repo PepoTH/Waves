@@ -28,6 +28,7 @@ marca = document.getElementById('header-title')
 reserv_cancel = document.getElementById('reserv-cancel')
 reserv_principal = document.getElementById('main-btn-reserve')
 pago_btn = document.getElementById('pago-confirm')
+pago_back = document.getElementById('pago-cancel')
 btn_correo = document.getElementById('correo-confirm')
 btn_boleto = document.getElementById('boleto-btn')
 reserv_confirm = document.getElementById('reserv-confirm')
@@ -95,6 +96,11 @@ pago_btn.onclick = function alerta(event) {
     pago_confirmado.style.display = 'flex'
 }
 
+pago_back.onclick = function back(event) {
+    pago.style.display = 'none'
+    reservar.style.display = 'flex'
+}
+
 //Correo => Boleto
 btn_correo.onclick = function alerta(event) {
     pago.style.display = 'none'
@@ -106,7 +112,7 @@ btn_correo.onclick = function alerta(event) {
     seats.forEach(seat => {
       if (seat.classList.contains('ocupado')) {
         seat.classList.add('comprado');
-        seat.style.backgroundColor = '#ffffff50'
+        seat.style.backgroundColor = '#b0b0b0'
       }
     });
 }
@@ -138,8 +144,6 @@ function crearCuadrículaButacas(filas, columnas) {
             //Implementar
             if(j == 1 || j == 6){
                 butaca.style.marginRight = '20px'
-                
-                
             }
             butaca.style.width = '30px'
             butaca.style.height = '30px'
