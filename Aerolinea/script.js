@@ -1,275 +1,108 @@
-//Animacion de Nube
-function subir(e)
-{
-if(e.type=="mouseover"){
-        nube.style.bottom = '-15%';
-        nube2.style.bottom = '-15%';
-    }
-    else{
-        nube.style.bottom = '-40%';
-        nube2.style.bottom = '-40%';
-    }
-}
+//Logica del programa
 
-var nube = document.getElementsByClassName('nube-main')[0]
-var nube2 = document.getElementsByClassName('nube-main2')[0]
-let head_title = document.getElementById('main-title');
-head_title.addEventListener('mouseover', subir);
-head_title.addEventListener('mouseout', subir);
+//Datos de los id y las clases
+//Botones e inputs
+let reserv = document.getElementsByClassName('reserv')[0];
+let marca = document.getElementById('header-title');
+let reserva_confirmada = document.getElementById('reserv-confirm');
+let reserva_cancelar = document.getElementById('reserv-cancel');
+let reserva_principal = document.getElementById('main-btn-reserve');
+let pago_btn = document.getElementById('pago-confirm');
+let pago_cancelar = document.getElementById('pago-cancel');
 
+//Views 
+let principal = document.getElementsByClassName('principal')[0];
+let reservar = document.getElementsByClassName('reservar')[0];
+let pago = document.getElementsByClassName('pago')[0];
+let boleto = documente.getElementsByClassName('boleto')[0];
 
-//INICIO DEL PROGRAMA
+//semiViews
+let pago_datos = document.getElementsByClassName('pago-cuadro')[0];
+let pago_confirmado = document.getElementsByClassName('pago-cuadro-confirm')[0];
 
-//Cambio View
+//Datos de la informacion del vuelo
+let nombre_persona = document.getElementsByClassName('name')[0];
+let apellido_persona = document.getElementsByClassName('apellido')[0];
+let cedula = document.getElementsByClassName('cedula')[0];
+let maletas = document.getElementsByClassName('maletas')[0];
+let peso = document.getElementsByClassName('peso')[0];
+let listaclase = document.getElementsByClassName('clase-reserv-input')[0];
+let listaEquipa = document.getElementsByClassName('mano reserv-input')[0];
 
-//Botones e Inputs
-reserv = document.getElementsByClassName('reserv')[0]
-marca = document.getElementById('header-title')
-reserv_cancel = document.getElementById('reserv-cancel')
-reserv_principal = document.getElementById('main-btn-reserve')
-pago_btn = document.getElementById('pago-confirm')
-pago_back = document.getElementById('pago-cancel')
-btn_correo = document.getElementById('correo-confirm')
-btn_boleto = document.getElementById('boleto-btn')
-reserv_confirm = document.getElementById('reserv-confirm')
+//Datos del pago del vuelo
+let nombre_resp = document.getElementsByClassName('nom-cuenta')[0];
+let ape_resp = document.getElementsByClassName('pago-ape')[0];
+let cedula_resp = document.getElementsByClassName('ced-cuenta')[0];
+let numero_Cuenta = document.getElementsByClassName('num-cuenta')[0];
+let tlf_resp = docuemnt.getElementsByClassName('tel-cuenta')[0];
+let banco = document.getElementsByClassName('nom-banco')[0];
 
+//Datos del boleto de confirmación
+nombre_boleto = document.getElementById('nombre-boleto');
+apellido_boleto = document.getElementById('ape-boleto');
+correo_boleto = document.getElementById('correo-boleto');
+cedula_boleto = document.getElementById('cedula-boleto');
+fecha_compra = document.getElementById('fecha-com');
+fecha_vuelo = document.getElementById('fecha-vuelo');
+hora_vuelo = document.getElementById('hora-vuelo');
+puerta = document.getElementById('puerta-boleto');
+factura = document.getElementById('factura-boleto');
+monto_boleto = document.getElementById('monto-boleto');
+btn_volver = document.getElementById('boleto-btn');
 
-//Views
-principal = document.getElementsByClassName('principal')[0]
-reservar = document.getElementsByClassName('reservar')[0]
-pago = document.getElementsByClassName('pago')[0]
-boleto = document.getElementsByClassName('boleto')[0]
+// Funciones
 
-//SemiView
-pago_datos = document.getElementsByClassName('pago-cuadro')[0]
-pago_confirmado = document.getElementsByClassName('pago-cuadro-confirm')[0]
+// Funcion que crea la Cuadricula de la Butacas
+function crearCuadriculaButacas(fila,columnas){
 
-
-//Flex a cada uno para verlo
-pago_confirmado.style.display = 'none'
-principal.style.display = 'flex'
-reservar.style.display = 'none'
-pago.style.display = 'none'
-pago_datos.style.display = 'none'
-boleto.style.display = 'none'
-
-//Principal Boton de Navbar => Reserva
-reserv.onclick = function alerta(event) {
-    pago_confirmado.style.display = 'none'
-    principal.style.display = 'none'
-    reservar.style.display = 'flex'
-    pago.style.display = 'none'
-    pago_datos.style.display = 'none'
-    boleto.style.display = 'none'
-}
-
-//Principal Boton de Frase => Reserva
-reserv_principal.onclick = function alerta(event) {
-    pago_confirmado.style.display = 'none'
-    principal.style.display = 'none'
-    reservar.style.display = 'flex'
-    pago.style.display = 'none'
-    pago_datos.style.display = 'none'
-    boleto.style.display = 'none'
-}
-
-//Logo => Principal
-marca.onclick = function alerta(event) {
-    principal.style.display = 'flex'
-    reservar.style.display = 'none'
-    pago.style.display = 'none'    
-    pago_confirmado.style.display = 'none'
-    pago_datos.style.display = 'none'
-    boleto.style.display = 'none'
-}
-
-//Reservacion Cancelada
-reserv_cancel.onclick = function alerta(event) {
-    principal.style.display = 'flex'
-    reservar.style.display = 'none'
-    pago.style.display = 'none'
-}
-
-//Pago => Correo
-pago_btn.onclick = function alerta(event) {
-    pago_datos.style.display = 'none'
-    pago_confirmado.style.display = 'flex'
-}
-
-pago_back.onclick = function back(event) {
-    pago.style.display = 'none'
-    reservar.style.display = 'flex'
-}
-
-//Correo => Boleto
-btn_correo.onclick = function alerta(event) {
-    pago.style.display = 'none'
-    boleto.style.display = 'flex'
-    const ocupar = [];
-    const seats = document.querySelectorAll('.butaca');
-    console.log(seats)
-  
-    seats.forEach(seat => {
-      if (seat.classList.contains('ocupado')) {
-        seat.classList.add('comprado');
-        seat.style.backgroundColor = '#b0b0b0'
-      }
-    });
-}
-
-
-//Boleto => Principal 
-btn_boleto.onclick = function alerta(event) {
-    pago.style.display = 'none'
-    principal.style.display = 'flex'
-    reservar.style.display = 'none'
-    boleto.style.display = 'none'
-}
-
-
-
-
-//ARREGLAR BUTACAS
-function crearCuadrículaButacas(filas, columnas) {
     const contenedorButacas = document.getElementById('contenedor-asientos');
-
-    for (let i = 0; i < filas; i++) {
+    for (let i = 0; i < fila; i++) {
         const fila = document.createElement('div');
         fila.classList.add('fila-asientos');
 
         for (let j = 0; j < columnas; j++) {
             const numeroButaca = `${String.fromCharCode(65 + j)}${i + 1}`; // Calcular el nombre de la butaca (ej: 1A, 2B, etc.)
-            const butaca = crearButaca(numeroButaca);
+            const butaca = crearButa(numeroButaca);
             fila.appendChild(butaca);
-            //Implementar
-            if(j == 1 || j == 6){
-                butaca.style.marginRight = '20px'
-            }
-            butaca.style.width = '30px'
-            butaca.style.height = '30px'
-            butaca.style.marginTop = '-5px'
-            butaca.style.fontSize = '0.8rem'
-        }
 
+            //Impletamos la forma de los asientos en un avion
+            if(j == 1 || j == 6){
+                butaca.style.marginRight = '20px';
+            }
+            butaca.style.width = '30px';
+            butaca.style.height = '30px';
+            butaca.style.marginTop = '-5px';
+            butaca.style.fontSize = '0.8rem';
+            
+        }
         contenedorButacas.appendChild(fila);
     }
 }
+// Funcion que crear la butaca
+function crearButa(numeroButaca){
+    const crearButaca = document.createElement('div');
+    crearButaca.classList.add('butaca');
+    crearButaca.textContent = numeroButaca; // Muestre el numero de la butaca
 
-
-function crearButaca(numeroButaca) {
-    const butaca = document.createElement('div');
-    butaca.classList.add('butaca');
-    butaca.textContent = numeroButaca; // Mostrar el número de butaca
-
-    butaca.addEventListener('click', function() {
+    crearButaca.addEventListener('click',() =>{
         if(this.classList.contains('comprado')){
-            alert('Asiento Comprado')
-        }
-        else{
+            alert('Asiento Comprado');
+
+        }else{
             this.classList.toggle('ocupado');
-            let lista = listaseleccionados()
-            console.log(lista)
-            
+            listaseleccionados();
         }
-
     });
-
-    return butaca;
+    return crearButaca
+}
+// pone los asientos creados en la pagina
+window.onload = function(){
+    crearCuadriculaButacas(12,9) // crear una cuadricula de 12 filas x 9 columnas
 }
 
-
-window.onload = function() {
-    crearCuadrículaButacas(12, 9); // Crear una cuadrícula de 5 filas x 3 columnas
-};
-
-
-
-function listaseleccionados() {
-    const selectedSeats = [];
-    const seats = document.querySelectorAll('.butaca');
-    console.log(seats)
-  
-    seats.forEach(seat => {
-      if (seat.classList.contains('ocupado')) {
-        selectedSeats.push(seat);
-      }
-    });
-    return selectedSeats;
+//Fucion que hace una lista de losdivs que esta seleccionados para representara los asientos ocupados
+function listaseleccionados(){
+    const asientosocupados = [];
+    const buta = document.querySelectorAll('.butaca')
+    
 }
-function borrandolista() {
-    const selectedSeats = [];
-    const seats = document.querySelectorAll('.butaca');
-    console.log(seats)
-  
-    seats.forEach(seat => {
-      if (seat.classList.contains('ocupado')) {
-        seat.classList.remove('ocupado')
-      }
-    });
-}
-
-
-
-
-//Datos
-nombre = document.getElementsByClassName('name')[0]
-apellido = document.getElementsByClassName('apellido')[0]
-cedula = document.getElementsByClassName('cedula')[0]
-maletas = document.getElementsByClassName('maletas')[0]
-peso = document.getElementsByClassName('peso')[0]
-correo = document.getElementsByClassName('correo')[0]
-mano = document.getElementsByClassName('mano')[0]
-
-//Campos Validados
-reserv_confirm.onclick = function ocupar(event) {
-    if(!(nombre.value.length == 0 || apellido.value.length == 0 || cedula.value.length == 0 || maletas.value.length == 0 || peso.value.length == 0 || correo.value.length == 0)){
-        pago_confirmado.style.display = 'none'
-        principal.style.display = 'none'
-        reservar.style.display = 'none'
-        pago.style.display = 'flex'
-        pago_datos.style.display = 'flex'
-        boleto.style.display = 'none'
-    }
-}
-
-function valid(e){
-    //Funcion isNaN verifica si es numero, si es numero retornara False
-    if (isNaN(e.key)){
-        if (e.key != 'Backspace'){
-            e.preventDefault()
-        }
-    }
-}
-
-cedula.addEventListener('keydown',event => valid(event))
-peso.addEventListener('keydown',event => valid(event))
-maletas.addEventListener('keydown',event => valid(event))
-
-
-//PAGO
-
-nombre_pago = document.getElementsByClassName('nom-cuenta')[0]
-apellido_pago = document.getElementsByClassName('pago-ape')[0]
-numero_cuenta = document.getElementsByClassName('num-cuenta')[0]
-cedula_cuenta = document.getElementsByClassName('ced-cuenta')[0]
-telefono_cuenta = document.getElementsByClassName('tel-cuenta')[0]
-nombre_banco = document.getElementsByClassName('nom-banco')[0]
-btn_confir_pago = document.getElementById('pago-confirm')
-
-//BOLETO
-
-nombre_boleto = document.getElementById('nombre-boleto')
-apellido_boleto = document.getElementById('ape-boleto')
-correo_boleto = document.getElementById('correo-boleto')
-cedula_boleto = document.getElementById('cedula-boleto')
-fecha_compra = document.getElementById('fecha-com')
-fecha_vuelo = document.getElementById('fecha-vuelo')
-hora_vuelo = document.getElementById('hora-vuelo')
-puerta = document.getElementById('puerta-boleto')
-factura = document.getElementById('factura-boleto')
-monto_boleto = document.getElementById('monto-boleto')
-let btnVolver = document.getElementById('boleto-btn')
-
-btnVolver.addEventListener('click',() =>{
-    let borrar = borrandolista()
-})
