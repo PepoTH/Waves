@@ -2,6 +2,7 @@
 
 //Datos de los id y las clases
 //Botones e inputs
+let listaaisentosGolbal = [];
 let reserv = document.getElementsByClassName('reserv')[0];
 let marca = document.getElementById('header-title');
 let reserva_confirmada = document.getElementById('reserv-confirm');
@@ -26,9 +27,10 @@ let pago_confirmado = document.getElementsByClassName('pago-cuadro-confirm')[0];
 let nombre_persona = document.getElementsByClassName('name')[0];
 let apellido_persona = document.getElementsByClassName('apellido')[0];
 let cedula = document.getElementsByClassName('cedula')[0];
+let correo = document.getElementsByClassName('correo')[0];
 let maletas = document.getElementsByClassName('maletas')[0];
 let peso = document.getElementsByClassName('peso')[0];
-let listaclase = document.getElementsByClassName('clase-reserv-input')[0];
+let listaclase = document.getElementsByClassName('clase reserv-input')[0];
 let listaEquipa = document.getElementsByClassName('mano reserv-input')[0];
 
 //Datos del pago del vuelo
@@ -40,17 +42,17 @@ let tlf_resp = document.getElementsByClassName('tel-cuenta')[0];
 let banco = document.getElementsByClassName('nom-banco')[0];
 
 //Datos del boleto de confirmación
-nombre_boleto = document.getElementById('nombre-boleto');
-apellido_boleto = document.getElementById('ape-boleto');
-correo_boleto = document.getElementById('correo-boleto');
-cedula_boleto = document.getElementById('cedula-boleto');
-fecha_compra = document.getElementById('fecha-com');
-fecha_vuelo = document.getElementById('fecha-vuelo');
-hora_vuelo = document.getElementById('hora-vuelo');
-puerta = document.getElementById('puerta-boleto');
-factura = document.getElementById('factura-boleto');
-monto_boleto = document.getElementById('monto-boleto');
-btn_volver = document.getElementById('boleto-btn');
+let nombre_boleto = document.getElementById('nombre-boleto');
+let apellido_boleto = document.getElementById('ape-boleto');
+let correo_boleto = document.getElementById('correo-boleto');
+let cedula_boleto = document.getElementById('cedula-boleto');
+let fecha_compra = document.getElementById('fecha-com');
+let fecha_vuelo = document.getElementById('fecha-vuelo');
+let hora_vuelo = document.getElementById('hora-vuelo');
+let puerta = document.getElementById('puerta-boleto');
+let factura = document.getElementById('factura-boleto');
+let monto_boleto = document.getElementById('monto-boleto');
+let btn_volver = document.getElementById('boleto-btn');
 
 // Vistas a cada uno de los views
 pago_confirmado.style.display = 'none'
@@ -128,6 +130,7 @@ btn_boleto.onclick = function alerta(event) {
     reservar.style.display = 'none'
     boleto.style.display = 'none'
 }
+// Evento para las listas desplegables
 
 // Funciones
 
@@ -163,17 +166,20 @@ function crearButa(numeroButaca){
     crearButaca.classList.add('butaca');
     crearButaca.textContent = numeroButaca; // Muestre el numero de la butaca
 
-    crearButaca.addEventListener('click',() =>{
+    crearButaca.addEventListener('click',function() {
         if(this.classList.contains('comprado')){
             alert('Asiento Comprado');
+            borrarLista()
 
         }else{
             this.classList.toggle('ocupado');
-            listaseleccionados();
+            listaaisentosGolbal = listaseleccionados();
+            console.log(listaaisentosGolbal)
         }
     });
     return crearButaca
 }
+
 // pone los asientos creados en la pagina
 window.onload = function(){
     crearCuadriculaButacas(12,9) // crear una cuadricula de 12 filas x 9 columnas
@@ -197,12 +203,13 @@ function borrarLista(){
     
     butas.forEach(buta =>{
         if(buta.classList.contains('ocupado')){
-            buta.classList.remove('ocupados')
+            buta.classList.remove('comprado')
         }
     });
 }
 
 // Funciones que ayudara para la informacion del boleto
+
 
 // Funcion que toma la fecha de hoy para la fecha de compra
 function fechaCompra(){
@@ -216,27 +223,40 @@ function fechaVuelo(){
     return new Date(start.getTime() + Math.random()*(end.getTime() - start.getTime()));
 }
 // Funcion que calcula el monto total del boleto
-function Calculo_monto(listaclase,listaEquipa){
-    let listaasientos = listaseleccionados();
-    let cantMal = parseInt(maletas.value);
-    let pesoMal = parseInt(peso.value);
-    if(listaclase.value === 'Economica' && listaEquipa.value === 'Si'){
-        return (listaasientos.length*405) + (cantMal*pesoMal*0.9);
+function Calculo_monto(listaclase,listaEquipa,listaasientos){
+    const cantMal = document.getElementsByClassName('maletas')[0].value;
+    let pesoMal = parseInt(document.getElementsByClassName('peso')[0].value);
+    if(listaclase.value == 'Economica' && 
+        listaEquipa.value == 'Si'){
+        return parseInt((listaasientos.length*405) + (cantMal*pesoMal*0.9));
 
-    }else if(listaclase.value === 'Economica' && listaEquipa.value === 'No'){
-        return (listaasientos.length*405)
+    }else if(listaclase.value == 'Economica' && 
+        listaEquipa.value == 'No'){
+        return parseInt(listaasientos.length*405)
 
     }else{
-        if(listaclase.value === 'Empresarial' && listaEquipa.value === 'Si'){
-            return (listaasientos.length*650) + (cantMal*pesoMal*0.9);
+        if(listaclase.value == 'Empresarial' && 
+            listaEquipa.value == 'Si'){
+            return parseInt((listaasientos.length*650) + (cantMal*pesoMal*0.9));
 
-        }else if(listaclase.value === 'Empresarial' && listaEquipa.value === 'No'){
-            return (listaasientos.length*650)
+        }else if(listaclase.value == 'Empresarial' && 
+            listaEquipa.value == 'No'){
+            return parseInt(listaasientos.length*650)
         }
     }
 }
-// Funciones que muestra la puerta de embarque
+// Funcion que muestra la hora de vuelo
+function HoraVuelo(hora){
+    if(hora.getHours() <= 11){
+        return hora.getHours() + "am";
+    }else{
+        return hora.getHours() + "pm";
+    }
+}
+// Funcion que genera la factura
 
+
+// Funciones que muestra la puerta de embarque
 //Funcion que devuelve la letra de la puerta 
 function crearLetra(length){
     let letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -252,7 +272,53 @@ function crearLetra(length){
 function PuertaEmbargue(letra){
     return letra + (Math.floor(Math.random()*30) + 1).toString()
 }
+
+
+
 // Agregando todos los inputs a los campos del boleto
-btn_correo
+btn_correo.addEventListener('click',() =>{
+    letra = crearLetra(1)
+    fechaV = fechaVuelo()
+    var result = Calculo_monto(listaclase,listaEquipa,listaaisentosGolbal)
+    console.log(result)
+    nombre_boleto.innerHTML += nombre_persona.value;
+    apellido_boleto.innerHTML += apellido_persona.value;
+    correo_boleto.innerHTML += correo.value;
+    cedula_boleto.innerHTML += cedula.value;
+    fecha_compra.innerHTML += fechaCompra();
+    fecha_vuelo.innerHTML += fechaV.toLocaleDateString();
+    hora_vuelo.innerHTML += HoraVuelo(fechaV);
+    puerta.innerHTML += PuertaEmbargue(letra)
+    factura.innerHTML += (Math.floor(Math.random()*999999));
+    monto_boleto.innerHTML += result + '$'
+
+})
+
+// Limpiar todos los campos
+btn_volver.addEventListener('click',() =>{
+    nombre_persona.value = ''
+    apellido_persona.value = ''
+    cedula.value = ''
+    maletas.value = ''
+    peso.value = ''
+    correo.value = ''
+    nombre_resp.value = ''
+    ape_resp.value = ''
+    cedula_resp.value = ''
+    numero_Cuenta.value = ''
+    banco.value = ''
+    nombre_boleto.innerHTML = 'Nombre:'
+    apellido_boleto.innerHTML = 'Apellido:'
+    correo_boleto.innerHTML = 'Correo:'
+    cedula_boleto.innerHTML = 'Cedula:'
+    fecha_compra.innerHTML = 'Fecha de Compra:'
+    fecha_vuelo.innerHTML = 'Fecha de Vuelo:'
+    hora_vuelo.innerHTML = 'Hora de Vuelo:'
+    puerta.innerHTML = 'Puerta de Embargue:'
+    factura.innerHTML = 'Factura:'
+    monto_boleto.innerHTML = 'Monto:'
+    let borra = borrarLista()
+    
+})
 
 
