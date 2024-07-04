@@ -22,8 +22,3 @@ En Waves, no solo volamos a destinos exóticos, sino que también creamos un amb
 
 7. **Hashtags de Viaje**: ¿Quieres compartir tus momentos Waves? Únete a la conversación con nuestros hashtags: #WavesWanderlust y #SkyHighDreams.
 
----
-
-¿Qué te parece? Si necesitas más detalles o si deseas explorar más sobre Waves, no dudes en preguntar. ¡Felices vuelos! ✈️🌟
-
-: Esta descripción es completamente ficticia y creada con fines imaginativos.
