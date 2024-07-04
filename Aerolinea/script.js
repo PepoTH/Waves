@@ -50,6 +50,7 @@ let fecha_compra = document.getElementById('fecha-com');
 let fecha_vuelo = document.getElementById('fecha-vuelo');
 let hora_vuelo = document.getElementById('hora-vuelo');
 let puerta = document.getElementById('puerta-boleto');
+let asientoB = document.getElementById('asientos-boleto');
 let factura = document.getElementById('factura-boleto');
 let monto_boleto = document.getElementById('monto-boleto');
 let btn_volver = document.getElementById('boleto-btn');
@@ -269,6 +270,14 @@ function crearLetra(length){
 function PuertaEmbargue(letra){
     return letra + (Math.floor(Math.random()*30) + 1).toString()
 }
+function asientos(lista){
+    let resultado = []
+    for (let index = 0; index < lista.length; index++) {
+        const element = lista[index].textContent
+        resultado.push(element)
+    }
+    return resultado
+}
 
 
 
@@ -277,7 +286,7 @@ btn_correo.addEventListener('click',() =>{
     letra = crearLetra(1)
     fechaV = fechaVuelo()
     var result = Calculo_monto(listaclase,listaEquipa,listaaisentosGolbal)
-    console.log(result)
+    var asien = asientos(listaaisentosGolbal)
     nombre_boleto.innerHTML += nombre_persona.value;
     apellido_boleto.innerHTML += apellido_persona.value;
     correo_boleto.innerHTML += correo.value;
@@ -288,6 +297,7 @@ btn_correo.addEventListener('click',() =>{
     puerta.innerHTML += PuertaEmbargue(letra)
     factura.innerHTML += (Math.floor(Math.random()*999999));
     monto_boleto.innerHTML += result + '$'
+    asientoB.innerHTML += asien.join("-")
 
 })
 
@@ -303,6 +313,7 @@ btn_volver.addEventListener('click',() =>{
     ape_resp.value = ''
     cedula_resp.value = ''
     numero_Cuenta.value = ''
+    tlf_resp.value = '';
     banco.value = ''
     nombre_boleto.innerHTML = 'Nombre:'
     apellido_boleto.innerHTML = 'Apellido:'
@@ -314,8 +325,72 @@ btn_volver.addEventListener('click',() =>{
     puerta.innerHTML = 'Puerta de Embargue:'
     factura.innerHTML = 'Factura:'
     monto_boleto.innerHTML = 'Monto:'
+    asientoB.innerHTML = 'Asiento/s:'
     borrarLista()
     
 })
+// Validaciones de programa
+reserva_confirmada.onclick = function ocupar(event){
+    if(nombre_persona.value.length == 0 || apellido_persona.value.length == 0 || cedula.value.length == 0 || maletas.value.length == 0 
+        || peso.value.length == 0 || correo.value.length == 0){
+            alert("No han llenado los campos de texto")
+        }else{
+            pago_confirmado.style.display = 'none'
+            principal.style.display = 'none'
+            reservar.style.display = 'none'
+            pago.style.display = 'flex'
+            pago_datos.style.display = 'flex'
+            boleto.style.display = 'none'
+        }
+}
+pago_btn.onclick = function ocupar(event){
+    if(nombre_resp.value.length == 0 || ape_resp.value.length == 0 || cedula_resp.value.length == 0 || numero_Cuenta.value.length == 0
+        || tlf_resp.value.length == 0 || banco.value.length == 0){
+            alert("No han llenado los campos de texto")
+        }else{
+            pago_confirmado.style.display = 'flex'
+            principal.style.display = 'none'
+            reservar.style.display = 'none'
+            pago.style.display = 'flex'
+            pago_datos.style.display = 'none'
+            boleto.style.display = 'none'
+        } 
+}
+// validacion para entrada de numeros
+function valid(e){
+    //Funcion isNaN verifica si es numero, si es numero retornara False
+    if (isNaN(e.key)){
+        if (e.key != 'Backspace'){
+            e.preventDefault()
+        }
+    }
+}
+cedula.addEventListener('keydown',event => valid(event))
+maletas.addEventListener('keydown',event => valid(event))
+peso.addEventListener('keydown',event => valid(event))
+numero_Cuenta.addEventListener('keydown',event => valid(event))
+cedula_resp.addEventListener('keydown',event => valid(event))
+
+//valdiacion para la entrada de palabras
+function validLetra(e){
+    var key = e.keyCode || e.which,
+      tecla = String.fromCharCode(key).toLowerCase(),
+      letras = " áéíóúabcdefghijklmnñopqrstuvwxyz",
+      especiales = [8, 37, 39, 46],
+      tecla_especial = false;
+
+    for (var i in especiales) {
+      if (key == especiales[i]) {
+        tecla_especial = true;
+        break;
+      }
+    }
+
+    if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+      return false;
+    }
+}
+
+
 
 

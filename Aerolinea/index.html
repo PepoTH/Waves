@@ -38,12 +38,12 @@
             </div>
             <div class="reserv-datos">
                 <h2 id="datos-title">Datos</h2>
-                <input class="reserv-input name" placeholder="Nombre" type="text">
-                <input class="reserv-input apellido" placeholder="Apellido" type="text">
-                <input class="reserv-input cedula" placeholder="Cedula" type="text">
-                <input class="reserv-input maletas" placeholder="Cantidad de Maletas" type="text">
-                <input class="reserv-input peso" placeholder="Peso KG" type="text">
-                <input class="reserv-input correo" placeholder="Correo" type="text">
+                <input class="reserv-input name" placeholder="Nombre" type="text" onkeypress="return validLetra(event)" maxlength="10">
+                <input class="reserv-input apellido" placeholder="Apellido" type="text"onkeypress="return validLetra(event)" maxlength="10">
+                <input class="reserv-input cedula" placeholder="Cedula" type="text" maxlength="8">
+                <input class="reserv-input maletas" placeholder="Cantidad de Maletas" type="text" maxlength="2">
+                <input class="reserv-input peso" placeholder="Peso KG" type="text" maxlength="3" >
+                <input class="reserv-input correo" placeholder="Correo" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" maxlength="254" >
                 <select class="clase reserv-input">
                     <option>Economica</option>
                     <option>Empresarial</option>
@@ -60,11 +60,11 @@
         <div class="view pago">
             <div class="pago-cuadro">
                 <h2 id="pago-title">Pago</h2>
-                <input class="pago-input nom-cuenta" placeholder="Nombre" type="text">
-                <input class="pago-input pago-ape" placeholder="Apellido" type="text">
-                <input class="pago-input num-cuenta" placeholder="Numero de Cuenta" type="text">
-                <input class="pago-input ced-cuenta" placeholder="Cedula de la cuenta" type="text">
-                <input class="pago-input tel-cuenta" placeholder="Telefono de Cuenta" type="text">
+                <input class="pago-input nom-cuenta" placeholder="Nombre" type="text" onkeypress="return validLetra(event)" maxlength="10">
+                <input class="pago-input pago-ape" placeholder="Apellido" type="text" onkeypress="return validLetra(event)"maxlength = "10">
+                <input class="pago-input num-cuenta" placeholder="Numero de Cuenta" type="text" maxlength="20">
+                <input class="pago-input ced-cuenta" placeholder="Cedula de la cuenta" type="text" maxlength="8">
+                <input class="pago-input tel-cuenta" placeholder="Telefono de Cuenta" type="text" maxlength = "11" >
                 <input list="bancos" class="pago-input nom-banco" placeholder="Nombre del Banco" type="text">
                 <datalist id="bancos">
                     <option>Banesco</option>
@@ -95,6 +95,7 @@
                 <p class="p-boleto"  id="fecha-vuelo">Fecha de Vuelo: </p>
                 <p class="p-boleto"  id="hora-vuelo">Hora de Vuelo: </p>
                 <p class="p-boleto"  id="puerta-boleto">Puerta de Embargue: </p>
+                <p class="p-boleto"  id="asientos-boleto">Asiento/s: </p>
                 <p class="p-boleto"  id="factura-boleto">Factura: </p>
                 <p class="p-boleto"  id="monto-boleto">Monto: </p>
                 <button id="boleto-btn">Volver</button>
