@@ -200,11 +200,8 @@ function listaseleccionados(){
 //Funcion que borra la lista en la otra vuelta que haga el programa
 function borrarLista(){
     const butas = document.querySelectorAll('.butaca')
-    
     butas.forEach(buta =>{
-        if(buta.classList.contains('ocupado')){
-            buta.classList.remove('comprado')
-        }
+        buta.classList.remove('ocupado')
     });
 }
 
@@ -317,7 +314,7 @@ btn_volver.addEventListener('click',() =>{
     puerta.innerHTML = 'Puerta de Embargue:'
     factura.innerHTML = 'Factura:'
     monto_boleto.innerHTML = 'Monto:'
-    let borra = borrarLista()
+    borrarLista()
     
 })
 
