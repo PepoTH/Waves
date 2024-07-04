@@ -9,12 +9,14 @@ let reserva_cancelar = document.getElementById('reserv-cancel');
 let reserva_principal = document.getElementById('main-btn-reserve');
 let pago_btn = document.getElementById('pago-confirm');
 let pago_cancelar = document.getElementById('pago-cancel');
+let btn_correo = document.getElementById('correo-confirm');
+let btn_boleto = document.getElementById('boleto-btn')
 
 //Views 
 let principal = document.getElementsByClassName('principal')[0];
 let reservar = document.getElementsByClassName('reservar')[0];
 let pago = document.getElementsByClassName('pago')[0];
-let boleto = documente.getElementsByClassName('boleto')[0];
+let boleto = document.getElementsByClassName('boleto')[0];
 
 //semiViews
 let pago_datos = document.getElementsByClassName('pago-cuadro')[0];
@@ -34,7 +36,7 @@ let nombre_resp = document.getElementsByClassName('nom-cuenta')[0];
 let ape_resp = document.getElementsByClassName('pago-ape')[0];
 let cedula_resp = document.getElementsByClassName('ced-cuenta')[0];
 let numero_Cuenta = document.getElementsByClassName('num-cuenta')[0];
-let tlf_resp = docuemnt.getElementsByClassName('tel-cuenta')[0];
+let tlf_resp = document.getElementsByClassName('tel-cuenta')[0];
 let banco = document.getElementsByClassName('nom-banco')[0];
 
 //Datos del boleto de confirmación
@@ -49,6 +51,83 @@ puerta = document.getElementById('puerta-boleto');
 factura = document.getElementById('factura-boleto');
 monto_boleto = document.getElementById('monto-boleto');
 btn_volver = document.getElementById('boleto-btn');
+
+// Vistas a cada uno de los views
+pago_confirmado.style.display = 'none'
+principal.style.display = 'flex'
+reservar.style.display = 'none'
+pago.style.display = 'none'
+pago_datos.style.display = 'none'
+boleto.style.display = 'none'
+// Eventos que realiza el cambio de pagina
+
+// Principal Boton de navbar => Reserva
+reserv.onclick = function alerta(event) {
+    pago_confirmado.style.display = 'none'
+    principal.style.display = 'none'
+    reservar.style.display = 'flex'
+    pago.style.display = 'none'
+    pago_datos.style.display = 'none'
+    boleto.style.display = 'none'
+}
+// Principal Boton de Frase => Reserva
+reserva_principal.onclick = function alerta(event) {
+    pago_confirmado.style.display = 'none'
+    principal.style.display = 'none'
+    reservar.style.display = 'flex'
+    pago.style.display = 'none'
+    pago_datos.style.display = 'none'
+    boleto.style.display = 'none'
+}
+// Logo => Principal
+marca.onclick = function alerta(event) {
+    principal.style.display = 'flex'
+    reservar.style.display = 'none'
+}
+// reserva_datos => pago
+reserva_confirmada.onclick = function alerta(event) {
+    reservar.style.display = 'none'
+    pago.style.display = 'flex'
+    pago_datos.style.display = 'flex'
+}
+// Cancelar Reservacion
+reserva_cancelar.onclick = function alerta(event) {
+    principal.style.display = 'flex'
+    reservar.style.display = 'none'
+    pago.style.display = 'none'
+} 
+
+// Pago => Correo
+pago_btn.onclick = function alerta(event) {
+    pago_datos.style.display = 'none'
+    pago_confirmado.style.display = 'flex'
+}
+// Cancelar Pago
+pago_cancelar.onclick = function alerta(event){
+    pago.style.display = 'none'
+    reservar.style.display = 'flex'
+}
+
+// Correo => Boleto
+btn_correo.onclick = function alerta(event) {
+    pago.style.display = 'none'
+    boleto.style.display = 'flex'
+    const seats = document.querySelectorAll('.butaca');
+    console.log(seats)
+  
+    seats.forEach(seat => {
+      if (seat.classList.contains('ocupado')) {
+        seat.classList.add('comprado');
+      }
+    });
+}
+// Boletos => Principal
+btn_boleto.onclick = function alerta(event) {
+    pago.style.display = 'none'
+    principal.style.display = 'flex'
+    reservar.style.display = 'none'
+    boleto.style.display = 'none'
+}
 
 // Funciones
 
@@ -103,6 +182,77 @@ window.onload = function(){
 //Fucion que hace una lista de losdivs que esta seleccionados para representara los asientos ocupados
 function listaseleccionados(){
     const asientosocupados = [];
-    const buta = document.querySelectorAll('.butaca')
+    const butas = document.querySelectorAll('.butaca')
     
+    butas.forEach(buta =>{
+        if(buta.classList.contains('ocupado')){
+            asientosocupados.push(buta);
+        }
+    });
+    return asientosocupados;
 }
+//Funcion que borra la lista en la otra vuelta que haga el programa
+function borrarLista(){
+    const butas = document.querySelectorAll('.butaca')
+    
+    butas.forEach(buta =>{
+        if(buta.classList.contains('ocupado')){
+            buta.classList.remove('ocupados')
+        }
+    });
+}
+
+// Funciones que ayudara para la informacion del boleto
+
+// Funcion que toma la fecha de hoy para la fecha de compra
+function fechaCompra(){
+    let fecha = new Date();
+    return fecha.toLocaleDateString();
+}
+// Funcion que toma un dia random del mes de julio para la fecha del vuelo
+function fechaVuelo(){
+    let start = new Date(2024,7,5)
+    let end = new Date()
+    return new Date(start.getTime() + Math.random()*(end.getTime() - start.getTime()));
+}
+// Funcion que calcula el monto total del boleto
+function Calculo_monto(listaclase,listaEquipa){
+    let listaasientos = listaseleccionados();
+    let cantMal = parseInt(maletas.value);
+    let pesoMal = parseInt(peso.value);
+    if(listaclase.value === 'Economica' && listaEquipa.value === 'Si'){
+        return (listaasientos.length*405) + (cantMal*pesoMal*0.9);
+
+    }else if(listaclase.value === 'Economica' && listaEquipa.value === 'No'){
+        return (listaasientos.length*405)
+
+    }else{
+        if(listaclase.value === 'Empresarial' && listaEquipa.value === 'Si'){
+            return (listaasientos.length*650) + (cantMal*pesoMal*0.9);
+
+        }else if(listaclase.value === 'Empresarial' && listaEquipa.value === 'No'){
+            return (listaasientos.length*650)
+        }
+    }
+}
+// Funciones que muestra la puerta de embarque
+
+//Funcion que devuelve la letra de la puerta 
+function crearLetra(length){
+    let letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const tamString = letras.length;
+    let letra = '';
+    let cont = 0;
+    while(cont < length){
+        letra += letras.charAt(Math.floor(Math.random() * tamString));
+        cont += 1
+    }
+    return letra
+}
+function PuertaEmbargue(letra){
+    return letra + (Math.floor(Math.random()*30) + 1).toString()
+}
+// Agregando todos los inputs a los campos del boleto
+btn_correo
+
+
