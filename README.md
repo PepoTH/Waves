@@ -2,6 +2,10 @@
 
 ---
 
+<img src="https://i.giphy.com/LwzI46dAzXBrFdoUld.webp">
+
+---
+
 ### **Aerolínea Waves: Descubriendo Nuevos Horizontes**
 
 *¡Bienvenidos a bordo de Waves, donde cada vuelo es una experiencia única!*
