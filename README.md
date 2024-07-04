@@ -2,7 +2,7 @@
 
 ---
 
-<img width=100% src="https://i.gifer.com/3kf5.mp4">
+<img width=100% src="https://i.gifer.com/3kf5.gif">
 
 ---
 
