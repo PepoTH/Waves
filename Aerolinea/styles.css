@@ -375,10 +375,11 @@ header {
 .leyendas{
     margin: 15px;
     display: flex;
+    align-items: center;
     gap: 20px;
 }
 
-.cuadro-disponible, .cuadro-seleccionado, .cuadro-ocupado {
+.cuadro-disponible, .cuadro-seleccionado, .cuadro-ocupado, .cuadro-empre  {
     width: 20px;
     height: 20px;
     border-radius: 5px;
@@ -391,7 +392,7 @@ header {
     cursor: pointer;
 }
 
-.cuadro-disponible:hover, .cuadro-seleccionado:hover, .cuadro-ocupado:hover {
+.cuadro-disponible:hover, .cuadro-seleccionado:hover, .cuadro-ocupado:hover , .cuadro-empre:hover {
     width: 80px;
     color: black;
 }
@@ -407,4 +408,12 @@ header {
 .cuadro-ocupado {
     background-color: lightslategray;
     color: lightslategray;
+}
+
+.cuadro-empre {
+    background-color: white;
+    border-color: #fbffc2;
+    border-width: 2px;
+    border-style: solid;
+    color: white;
 }

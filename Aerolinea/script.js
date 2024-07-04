@@ -155,6 +155,15 @@ function crearCuadriculaButacas(fila,columnas){
             if(j == 1 || j == 6){
                 butaca.style.marginRight = '20px';
             }
+            if(i==0 || i==1){
+                butaca.style.borderColor = '#fbffc2'
+                butaca.style.borderStyle = 'solid'
+                butaca.style.borderWidth = '2px'
+                butaca.classList.add('empresarial');
+            }
+            else{
+                butaca.classList.add('economica')
+            }
             butaca.style.width = '30px';
             butaca.style.height = '30px';
             butaca.style.marginTop = '-5px';
@@ -171,15 +180,35 @@ function crearButa(numeroButaca){
     crearButaca.textContent = numeroButaca; // Muestre el numero de la butaca
 
     crearButaca.addEventListener('click',function() {
-        if(this.classList.contains('comprado')){
-            alert('Asiento Comprado');
-            borrarLista()
-
-        }else{
-            this.classList.toggle('ocupado');
-            listaaisentosGolbal = listaseleccionados();
-            console.log(listaaisentosGolbal)
+        if((this.classList.contains('empresarial') && document.getElementsByClassName('clase')[0].value === 'Empresarial')){
+            if(this.classList.contains('comprado')){
+                alert('Asiento Comprado');
+                borrarLista()
+    
+            }
+            else{
+                this.classList.toggle('ocupado');
+                listaaisentosGolbal = listaseleccionados();
+                console.log(listaaisentosGolbal)
+            }
         }
+        else if ((this.classList.contains('economica') && document.getElementsByClassName('clase')[0].value === 'Economica')){
+            if(this.classList.contains('comprado')){
+                alert('Asiento Comprado');
+                borrarLista()
+    
+            }
+            else{
+                this.classList.toggle('ocupado');
+                listaaisentosGolbal = listaseleccionados();
+                console.log(listaaisentosGolbal)
+            }
+        }
+        else{
+            alert('Asiento Seleccionado no concuerda con su clase')
+        }
+
+
     });
     return crearButaca
 }
