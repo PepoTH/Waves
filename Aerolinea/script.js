@@ -367,12 +367,17 @@ reserva_confirmada.onclick = function ocupar(event){
         || peso.value.length == 0 || correo.value.length == 0){
             alert("No han llenado los campos de texto")
         }else{
-            pago_confirmado.style.display = 'none'
-            principal.style.display = 'none'
-            reservar.style.display = 'none'
-            pago.style.display = 'flex'
-            pago_datos.style.display = 'flex'
-            boleto.style.display = 'none'
+            if(correo.value.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)){
+                pago_confirmado.style.display = 'none'
+                principal.style.display = 'none'
+                reservar.style.display = 'none'
+                pago.style.display = 'flex'
+                pago_datos.style.display = 'flex'
+                boleto.style.display = 'none'
+            }
+            else{
+                alert('Correo Invalido')
+            }
         }
 }
 pago_btn.onclick = function ocupar(event){
