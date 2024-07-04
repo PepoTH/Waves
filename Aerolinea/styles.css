@@ -367,3 +367,7 @@ header {
     appearance: none;
     background-color: white;
 }
+
+.comprado {
+    background-color: lightslategray;
+}
