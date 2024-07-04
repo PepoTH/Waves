@@ -1,4 +1,7 @@
 //Logica del programa
+//Integrantes
+//Cesar Dominguez
+//Jose Santana
 
 //Datos de los id y las clases
 //Botones e inputs

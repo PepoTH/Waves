@@ -9,6 +9,9 @@
 ---
 
 ### **Aerolínea Waves: Descubriendo Nuevos Horizontes**
+#### Propietarios: 
+#### - Cesar Dominguez
+#### - Jose Santana
 
 *¡Bienvenidos a bordo de Waves, donde cada vuelo es una experiencia única!*
 
