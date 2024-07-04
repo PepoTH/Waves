@@ -390,6 +390,24 @@ function validLetra(e){
       return false;
     }
 }
+// animaciones de nubes
+function subir(e)
+{
+if(e.type=="mouseover"){
+        nube.style.bottom = '-15%';
+        nube2.style.bottom = '-15%';
+    }
+    else{
+        nube.style.bottom = '-40%';
+        nube2.style.bottom = '-40%';
+    }
+}
+
+var nube = document.getElementsByClassName('nube-main')[0]
+var nube2 = document.getElementsByClassName('nube-main2')[0]
+let head_title = document.getElementById('main-title');
+head_title.addEventListener('mouseover', subir);
+head_title.addEventListener('mouseout', subir);
 
 
 
