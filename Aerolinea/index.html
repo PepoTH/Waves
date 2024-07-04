@@ -65,7 +65,14 @@
                 <input class="pago-input num-cuenta" placeholder="Numero de Cuenta" type="text">
                 <input class="pago-input ced-cuenta" placeholder="Cedula de la cuenta" type="text">
                 <input class="pago-input tel-cuenta" placeholder="Telefono de Cuenta" type="text">
-                <input class="pago-input nom-banco" placeholder="Nombre del Banco" type="text">
+                <input list="bancos" class="pago-input nom-banco" placeholder="Nombre del Banco" type="text">
+                <datalist id="bancos">
+                    <option>Banesco</option>
+                    <option>Mercantil</option>
+                    <option>BNC</option>
+                    <option>Bancaamiga</option>
+                    <option>Venezuela</option>
+                </datalist>
                 <button id="pago-confirm" class="pago-label-mano">Confirmar</button>
                 <button id="pago-cancel" class="pago-label-mano">Cancelar</button>
             </div>

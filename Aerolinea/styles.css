@@ -220,6 +220,7 @@ header {
     cursor: pointer;
 }
 
+
 .asientos, .pago-cuadro, .boleto-cuadro {
     display: flex;
     flex-direction: column;
@@ -236,6 +237,7 @@ header {
     height: 90%;
     color: #0E295D;
     font-family: 'Philosopher';
+
 }
 
 .pago,.boleto {
