@@ -48,6 +48,10 @@ header {
     cursor: pointer;
 }
 
+main {
+    height: 60vh;
+}
+
 .enlace, #main-btn-reserve {
     text-decoration: none;
     font-family: 'Philosopher';
@@ -132,6 +136,7 @@ header {
     left: -10%;
     bottom: -40%;
     transition: all 1s;
+    pointer-events: none;
 }
 
 .nube-main2 {
